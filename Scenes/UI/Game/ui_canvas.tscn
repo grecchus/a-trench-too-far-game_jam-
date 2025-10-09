@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://dityp7a2uk5w8"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Game/ui_canvas.gd" id="1_edmka"]
+
+[node name="UICanvas" type="CanvasLayer"]
+script = ExtResource("1_edmka")
+
+[node name="UIMain" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wave" type="Label" parent="UIMain"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.04
+grow_horizontal = 2
+text = "WAVE:"
+horizontal_alignment = 1
+
+[node name="WaveTimer" type="Label" parent="UIMain"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.04
+anchor_right = 1.0
+anchor_bottom = 0.08
+text = "Time to next wave: "
+horizontal_alignment = 1
+
+[node name="BuildingMenu" type="Control" parent="UIMain"]
+anchors_preset = 0
+offset_right = 392.0
+offset_bottom = 279.0
+
+[node name="GameOver" type="Control" parent="UIMain"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ammo" type="Label" parent="UIMain"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "N / N"

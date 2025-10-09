@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqve85sp3hdat"]
+
+[ext_resource type="Script" path="res://allied_soldier.gd" id="1_3grfa"]
+[ext_resource type="AudioStream" uid="uid://hy01a143wch2" path="res://Assets/sfx/pistol.wav" id="2_kbttv"]
+
+[node name="AlliedSoldierRifle" type="Node2D"]
+script = ExtResource("1_3grfa")
+
+[node name="FireRate" type="Timer" parent="."]
+
+[node name="Gunshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kbttv")
+volume_db = -20.0
+
+[connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
