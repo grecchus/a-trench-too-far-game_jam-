@@ -26,6 +26,7 @@ func _ready():
 	for tile_y in map_height:
 		$Tiles/Terrain.set_cell(Vector2i(line, tile_y), TILE_SOURCES.TERRAIN, Vector2i(TILE_TYPE.LINE,0))
 	$EnemyHandler._setup()
+	$UICanvas.show()
 
 func _process(delta: float) -> void:
 	var mouse_tm_pos = $Tiles/Terrain.local_to_map(get_global_mouse_position())

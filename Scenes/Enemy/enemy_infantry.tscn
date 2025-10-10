@@ -12,15 +12,14 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.0666667, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_wu3ki"]
 resource_name = "walk"
-length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -29,10 +28,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lvhg1"]
@@ -42,11 +41,11 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ejbp"]
-radius = 5.0
+radius = 8.0
 
 [node name="EnemyInfantry" type="CharacterBody2D"]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 14
+collision_mask = 14
 script = ExtResource("1_vx6s5")
 SPEED = 0.5
 

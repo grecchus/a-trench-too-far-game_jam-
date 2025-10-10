@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 
 func setup_bullet(pos : Vector2, dir : Vector2, side : int, barrel_offset : Vector2, exp_time := 1):
 	set_collision_mask_value(side, true)
-	set_collision_layer_value(side, true)
+	#set_collision_layer_value(side, true)
 	
 	look_at(dir)
 	global_position = pos + barrel_offset

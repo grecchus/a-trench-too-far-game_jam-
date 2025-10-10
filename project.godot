@@ -73,6 +73,7 @@ reload={
 2d_physics/layer_1="PLAYER"
 2d_physics/layer_2="ENEMY"
 2d_physics/layer_3="TERRAIN"
+2d_physics/layer_4="ENEMY_AREA_DETECTION"
 
 [rendering]
 

@@ -2,13 +2,27 @@
 
 [ext_resource type="Script" path="res://Scenes/Player/machine_gun.gd" id="1_efe5h"]
 [ext_resource type="Texture2D" uid="uid://ch0aakfka2jnp" path="res://Assets/textures/machine_gun.png" id="2_uvpmo"]
-[ext_resource type="Texture2D" uid="uid://mearqi08p01s" path="res://Assets/textures/machine_gun_legs.png" id="3_532o8"]
+[ext_resource type="AudioStream" uid="uid://hy01a143wch2" path="res://Assets/sfx/pistol.wav" id="3_iqqcp"]
 
 [node name="MachineGun" type="Node2D"]
 script = ExtResource("1_efe5h")
 
 [node name="Weapon" type="Sprite2D" parent="."]
 texture = ExtResource("2_uvpmo")
+flip_v = true
 
-[node name="Legs" type="Sprite2D" parent="."]
-texture = ExtResource("3_532o8")
+[node name="FiringRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FiringRange"]
+polygon = PackedVector2Array(-32, 32, -96, 96, -352, 96, -352, -96, -96, -96, -32, -32)
+
+[node name="FireRate" type="Timer" parent="."]
+
+[node name="Gunshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iqqcp")
+volume_db = -20.0
+
+[connection signal="body_entered" from="FiringRange" to="." method="_on_firing_range_body_entered"]
+[connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]

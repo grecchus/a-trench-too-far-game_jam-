@@ -29,7 +29,7 @@ func _choose_spawnpoints():
 	var spawnpoints : Array = []
 	var spawnpoint_count = clamp(game_stage, 3, map_height)
 	var new_enemy_position : Vector2
-	var enemy_count : int = spawnpoint_count*3 + rng.randi_range(-2,6)
+	var enemy_count : int = spawnpoint_count*3 + rng.randi_range(-2,4)
 	
 	for i in spawnpoint_count:
 		spawnpoints.append(ps_copy.pick_random())
