@@ -5,6 +5,12 @@ signal game_over
 
 func _ready() -> void:
 	$AnimationPlayer.play("walk")
+	
+func _on_hit(collider):
+	if(not collider): return
+	HP -= 1
+	collider.queue_free()
+	$Blood.emitting = true
 
 func _physics_process(delta: float) -> void:
 	

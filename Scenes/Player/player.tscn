@@ -11,6 +11,7 @@ radius = 7.0
 z_index = 1
 script = ExtResource("1_tblta")
 accuracy = 0.9
+SPEED = 15.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yeiud")

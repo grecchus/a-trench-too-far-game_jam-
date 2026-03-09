@@ -33,15 +33,72 @@ horizontal_alignment = 1
 
 [node name="BuildingMenu" type="Control" parent="UIMain"]
 anchors_preset = 0
-offset_right = 392.0
-offset_bottom = 279.0
+offset_right = 199.0
+offset_bottom = 40.0
+
+[node name="FieldMenu" type="PopupMenu" parent="UIMain/BuildingMenu" groups=["BuildingUI"]]
+size = Vector2i(74, 89)
+visible = true
+item_count = 3
+item_0/text = "Trench"
+item_1/text = "Mortar"
+item_1/id = 1
+item_2/text = "Mines"
+item_2/id = 2
+
+[node name="TrenchMenu" type="PopupMenu" parent="UIMain/BuildingMenu" groups=["BuildingUI"]]
+size = Vector2i(123, 62)
+visible = true
+item_count = 2
+item_0/text = "Infantry"
+item_1/text = "Machine Gun"
+item_1/id = 1
 
 [node name="GameOver" type="Control" parent="UIMain"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Ammo" type="Label" parent="UIMain"]
+[node name="RightPanel" type="Panel" parent="UIMain"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Weapon" type="Label" parent="UIMain/RightPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "M1911:"
+
+[node name="Ammo" type="Label" parent="UIMain/RightPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "N / N"
+horizontal_alignment = 2
+
+[node name="SuppliesName" type="Label" parent="UIMain/RightPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "Supplies:"
+
+[node name="Supplies" type="Label" parent="UIMain/RightPanel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -52,4 +109,40 @@ offset_left = -40.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "N / N"
+text = "0"
+horizontal_alignment = 2
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_top = 0.427
+anchor_right = 1.0
+anchor_bottom = 0.533
+offset_top = -0.200012
+offset_bottom = 8.19998
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "YOU'VE LOST!"
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "RETRY"
+
+[connection signal="id_pressed" from="UIMain/BuildingMenu/FieldMenu" to="." method="_on_field_menu_id_pressed"]
+[connection signal="id_pressed" from="UIMain/BuildingMenu/TrenchMenu" to="." method="_on_trench_menu_id_pressed"]
+[connection signal="pressed" from="GameOver/Retry" to="." method="_on_retry_pressed"]

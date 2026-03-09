@@ -9,8 +9,9 @@ const sprint_mult := 2.0
 
 var able_to_shoot := true
 
-@export var accuracy := 0.95
+@export var accuracy := 0.98
 @onready var angle_spread := 90.0*(1 - accuracy)
+@export var camera_range := 200.0
 
 var fire_rate_delay_on := false
 var fire_rate := 0.2
@@ -20,6 +21,10 @@ var reload_time := 2.0
 var magazine_capacity := 7
 var magazine := 7
 
+func _input(event: InputEvent) -> void:
+	if(event is InputEventMouseButton):
+		if(event.pressed and event.button_index == MOUSE_BUTTON_LEFT and able_to_shoot):
+			_shoot()
 
 func _physics_process(delta: float) -> void:
 	var movement : Vector2
@@ -29,8 +34,8 @@ func _physics_process(delta: float) -> void:
 	movement.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
 	movement.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
 	movement = movement.normalized()
-	if(Input.is_action_pressed("sprint")): speed *= sprint_mult
-	if(Input.is_action_just_pressed("left_click") and able_to_shoot): _shoot()
+	if(Input.is_action_pressed("sprint")): camera_look()
+	if(Input.is_action_just_released("sprint")): camera_return()
 	if(Input.is_action_just_pressed("reload") and able_to_shoot): _reload()
 	
 	look_at(get_global_mouse_position())
@@ -73,3 +78,12 @@ func _on_reload_timeout() -> void:
 
 func _on_fire_rate_timeout() -> void:
 	fire_rate_delay_on = false
+
+func camera_return():
+	$Camera2D.position = Vector2.ZERO
+
+func camera_look():
+	var dir = get_global_mouse_position() - self.global_position
+	var new_pos = get_global_mouse_position()
+	if(dir.length() > camera_range): return
+	$Camera2D.global_position = get_global_mouse_position()

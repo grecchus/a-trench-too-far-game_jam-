@@ -8,12 +8,17 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="A Trench Too Far"
+config/version="1.0"
 run/main_scene="res://Scenes/UI/Menu/main_menu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="res://Assets/icon.png"
 
 [autoload]
 
@@ -24,6 +29,10 @@ GV="*res://gv.gd"
 window/size/viewport_width=800
 window/size/viewport_height=600
 window/stretch/mode="viewport"
+
+[global_group]
+
+BuildingUI=""
 
 [input]
 

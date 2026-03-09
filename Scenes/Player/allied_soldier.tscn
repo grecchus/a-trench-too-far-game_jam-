@@ -1,15 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqve85sp3hdat"]
+[gd_scene load_steps=4 format=3 uid="uid://cqve85sp3hdat"]
 
 [ext_resource type="Script" path="res://allied_soldier.gd" id="1_3grfa"]
-[ext_resource type="AudioStream" uid="uid://hy01a143wch2" path="res://Assets/sfx/pistol.wav" id="2_kbttv"]
+[ext_resource type="AudioStream" uid="uid://dtmru3n5f5e5i" path="res://Assets/sfx/rifle.wav" id="2_282nj"]
+[ext_resource type="Texture2D" uid="uid://cceykk570mcnl" path="res://Assets/textures/infantry.png" id="2_ko6hx"]
 
 [node name="AlliedSoldierRifle" type="Node2D"]
 script = ExtResource("1_3grfa")
 
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ko6hx")
+
 [node name="FireRate" type="Timer" parent="."]
 
 [node name="Gunshot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_kbttv")
+stream = ExtResource("2_282nj")
 volume_db = -20.0
+mix_target = 1
+max_polyphony = 4
+
+[node name="FiringRange" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FiringRange"]
+position = Vector2(-18, 0)
+polygon = PackedVector2Array(-12, -4, -76, -28, -396, -28, -396, 28, -44, 28, -12, 4)
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(-28, 0)
 
 [connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
+[connection signal="body_entered" from="FiringRange" to="." method="_on_firing_range_body_entered"]

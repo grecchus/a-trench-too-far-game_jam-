@@ -1,20 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cicxdinsriedu"]
+[gd_scene load_steps=3 format=3 uid="uid://cicxdinsriedu"]
 
 [ext_resource type="Script" path="res://Scenes/Player/infantry.gd" id="1_csw5i"]
-[ext_resource type="Texture2D" uid="uid://cceykk570mcnl" path="res://Assets/textures/infantry.png" id="2_1f2g6"]
 [ext_resource type="PackedScene" uid="uid://cqve85sp3hdat" path="res://Scenes/Player/allied_soldier.tscn" id="3_dp03w"]
 
 [node name="Infantry" type="Node2D"]
+position = Vector2(608, 224)
 script = ExtResource("1_csw5i")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_1f2g6")
-
 [node name="AlliedSoldierRifle" parent="." instance=ExtResource("3_dp03w")]
-position = Vector2(-20, -20)
+position = Vector2(8, 0)
 
 [node name="AlliedSoldierRifle2" parent="." instance=ExtResource("3_dp03w")]
-position = Vector2(-20, 0)
+position = Vector2(8, -20)
 
 [node name="AlliedSoldierRifle3" parent="." instance=ExtResource("3_dp03w")]
-position = Vector2(-18, 18)
+position = Vector2(8, 20)

@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b30urjw5eakd2"]
+[gd_scene load_steps=10 format=3 uid="uid://b30urjw5eakd2"]
 
+[ext_resource type="Shader" path="res://Scenes/Enemy/on_hit.gdshader" id="1_1513m"]
 [ext_resource type="Texture2D" uid="uid://dpym0cp1djcp4" path="res://Assets/textures/enemy_infantry.png" id="1_te7n5"]
 [ext_resource type="Script" path="res://Scenes/Enemy/enemy_infantry.gd" id="1_vx6s5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8l48b"]
+shader = ExtResource("1_1513m")
 
 [sub_resource type="Animation" id="Animation_ks0n7"]
 length = 0.001
@@ -43,7 +47,19 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ejbp"]
 radius = 8.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cyke"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 31.7
+initial_velocity_max = 31.7
+gravity = Vector3(0, 0, 0)
+color = Color(0.678431, 0, 0, 1)
+
 [node name="EnemyInfantry" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_8l48b")
 collision_layer = 14
 collision_mask = 14
 script = ExtResource("1_vx6s5")
@@ -62,3 +78,11 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5ejbp")
+
+[node name="Blood" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_3cyke")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
