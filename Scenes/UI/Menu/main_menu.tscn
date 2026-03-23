@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://1kib2yk4xst7"]
+[gd_scene format=3 uid="uid://1kib2yk4xst7"]
 
-[ext_resource type="Script" path="res://Scenes/UI/Menu/main_menu.gd" id="1_yh878"]
+[ext_resource type="Script" uid="uid://clogjt0vxuw24" path="res://Scenes/UI/Menu/main_menu.gd" id="1_yh878"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1367038308]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yh878")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=409885938]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.25098, 0.25098, 0.25098, 1)
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=655988492]
 layout_mode = 0
 offset_right = 800.0
 offset_bottom = 192.0
@@ -34,7 +34,7 @@ text = "A Trench Too Far"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="." unique_id=910777581]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
